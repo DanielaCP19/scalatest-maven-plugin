@@ -116,6 +116,12 @@ abstract class AbstractScalaTestMojo extends AbstractMojo {
     boolean parallel;
 
     /**
+     * Set to the number of threads that can be executed concurrently
+     * @parameter expression="${parallelThreads}" default-value="1"
+     */
+    int parallelThreads = 1;
+    
+    /**
      * Comma separated list of packages containing suites to execute
      * @parameter expression="${membersOnlySuites}"
      */
@@ -434,7 +440,7 @@ abstract class AbstractScalaTestMojo extends AbstractMojo {
     }
 
     private List<String> parallel() {
-        return parallel ? singletonList("-c") : Collections.<String>emptyList();
+        return parallel ? singletonList("-P" + parallelThreads) : Collections.<String>emptyList();
     }
 
     //

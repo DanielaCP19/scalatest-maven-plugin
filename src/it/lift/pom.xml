@@ -9,7 +9,7 @@
   <description>Runs the plugin against a basic Lift application.</description>
   
   <properties>
-    <lift.version>2.4</lift.version>
+    <lift.version>2.5</lift.version>
   </properties>
 
   <parent>
@@ -25,20 +25,52 @@
       <artifactId>scala-library</artifactId>
       <version>${scala.version}</version>
     </dependency>
+        
+	<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+	<dependency>
+	    <groupId>javax.mail</groupId>
+	    <artifactId>mail</artifactId>
+	    <version>1.4.3-rc1</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-log4j12</artifactId>
+	    <version>1.5.11</version>
+	</dependency>    
+
     <dependency>
       <groupId>net.liftweb</groupId>
-      <artifactId>lift-util_${scala.version}</artifactId>
+      <artifactId>lift-util_${deploy.scala.version}</artifactId>
       <version>${lift.version}</version>
+      <exclusions>
+      	<exclusion>
+          <groupId>org.scala-lang</groupId>
+          <artifactId>scala-library</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>net.liftweb</groupId>
-      <artifactId>lift-webkit_${scala.version}</artifactId>
+      <artifactId>lift-webkit_${deploy.scala.version}</artifactId>
       <version>${lift.version}</version>
+      <exclusions>
+      	<exclusion>
+          <groupId>org.scala-lang</groupId>
+          <artifactId>scala-library</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>net.liftweb</groupId>
-      <artifactId>lift-mapper_${scala.version}</artifactId>
+      <artifactId>lift-mapper_${deploy.scala.version}</artifactId>
       <version>${lift.version}</version>
+      <exclusions>
+      	<exclusion>
+          <groupId>org.scala-lang</groupId>
+          <artifactId>scala-library</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -48,14 +80,14 @@
     </dependency>
     <dependency>
       <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_${scala.version}</artifactId>
+      <artifactId>scalatest_${deploy.scala.version}</artifactId>
       <version>${scalatest.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mortbay.jetty</groupId>
       <artifactId>jetty</artifactId>
-      <version>[6.1.6,)</version>
+      <version>6.1.26</version>
       <scope>test</scope>
     </dependency>
     <!-- for LiftConsole -->
